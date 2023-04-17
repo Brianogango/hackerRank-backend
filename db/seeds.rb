@@ -43,5 +43,17 @@ Kata.create([
       duration: "60 minutes"
     }
   ])
+  User.create(username: "minnie", email: "minnie@gmail.com", userType: "TM", password: "123456") 
+User.create(username: "blue", email: "blue@gmail.com", userType: "student", password: "123456")
+User.create(username: "faith" , email: "faith@gmail.com", userType: "student", password: "123456")
+User.create(username: "green", email: "green@gmail.com", userType: "student", password: "123456")
+User.create(username: "red", email: "red@gmail.com", userType: "student", password: "123456")
+User.create(username: "white" , email: "white@gmail.com", userType: "student", password: "123456")
+User.create(username: "joy", email: "joy@gmail.com", userType: "student", password: "123456")
   
-  
+Invitation.create(assessment_id: 1, user_id: 5, status: 'pending')
+Invitation.create(assessment_id: 3, user_id: 6, status: 'accepted')
+Invitation.create(assessment_id:1,  user_id: 4, status: 'declined')
+Invitation.create(assessment_id: 2, user_id: 7, status: 'pending')
+Invitation.create(assessment_id: 2, user_id: 8, status: 'accepted')
+Invitation.create(assessment_id: 2, user_id: 9, status: 'pending')

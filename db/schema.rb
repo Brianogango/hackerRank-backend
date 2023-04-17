@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_14_121834) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_17_093524) do
   create_table "assessment_kata", force: :cascade do |t|
     t.integer "assessment_id", null: false
     t.integer "kata_id", null: false
@@ -25,6 +25,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_14_121834) do
     t.string "duration"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "invitations", force: :cascade do |t|
+    t.integer "assessment_id", null: false
+    t.integer "user_id", null: false
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["assessment_id"], name: "index_invitations_on_assessment_id"
+    t.index ["user_id"], name: "index_invitations_on_user_id"
   end
 
   create_table "kata", force: :cascade do |t|
@@ -51,4 +61,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_14_121834) do
 
   add_foreign_key "assessment_kata", "assessments"
   add_foreign_key "assessment_kata", "kata", column: "kata_id"
+  add_foreign_key "invitations", "assessments"
+  add_foreign_key "invitations", "users"
 end

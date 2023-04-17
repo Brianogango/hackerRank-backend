@@ -1,5 +1,6 @@
 class User < ApplicationRecord
     has_secure_password
+    has_many :invites
     validates :username,  presence: true
     validates :userType, presence: true
     validates :password,  presence: true
