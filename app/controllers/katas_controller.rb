@@ -1,5 +1,6 @@
 class KatasController < ApplicationController
-    before_action :authorize_tm, only: [:create, :destroy]
+    # before_action :authorize_tm, only: [:create, :destroy]
+     skip_before_action :authorized, only: [:index]
 
 
     #GET /katas

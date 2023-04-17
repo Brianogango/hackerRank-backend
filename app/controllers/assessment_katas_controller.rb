@@ -1,5 +1,6 @@
 class AssessmentKatasController < ApplicationController
-    before_action :authorize_tm, only: [:create, :destroy, :update]
+    # before_action :authorize_tm, only: [:create, :destroy, :update]
+    skip_before_action :authorized, only: [:create, :show, :index]
     def index
         assessment_katas = AssessmentKata.all
         render json: assessment_katas
@@ -38,7 +39,7 @@ class AssessmentKatasController < ApplicationController
       private
     
       def assessment_kata_params
-        params.require(:assessment_kata).permit(:assessment_id, :kata_id)
+        params.permit(:assessment_id, :kata_id)
       end
     
       def authorize_tm
