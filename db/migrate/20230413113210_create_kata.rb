@@ -1,6 +1,6 @@
 class CreateKatas < ActiveRecord::Migration[7.0]
   def change
-    create_table :kata do |t|
+    create_table :katas do |t|
     
       t.string :name
       t.string :slug
