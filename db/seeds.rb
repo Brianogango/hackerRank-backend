@@ -38,4 +38,19 @@ Kata.create([
     }
   ])
   
+User.create(username: "minnie", email: "minnie@gmail.com", userType: "TM", password: "123456") 
+User.create(username: "blue", email: "blue@gmail.com", userType: "student", password: "123456")
+User.create(username: "faith" , email: "faith@gmail.com", userType: "student", password: "123456")
+User.create(username: "green", email: "green@gmail.com", userType: "student", password: "123456")
+User.create(username: "red", email: "red@gmail.com", userType: "student", password: "123456")
+User.create(username: "white" , email: "white@gmail.com", userType: "student", password: "123456")
+User.create(username: "joy", email: "joy@gmail.com", userType: "student", password: "123456")
+
+
+Invitation.create(assessment_id: 1, user_id: 2, status: 'pending', note: 'The javascript assesment is created to test your skills', email: 'blue@gmail.com', end_date: '2023-04-18')
+Invitation.create(assessment_id: 3, user_id: 4, status: 'accepted', note: '', email: 'green@gmail.com', end_date: '2023-04-25')
+Invitation.create(assessment_id: 1, user_id: 4, status: 'declined', note: '', email: 'green@gmail.com', end_date: '2023-04-18')
+Invitation.create(assessment_id: 2, user_id: 6, status: 'pending', note: '', email: 'white@gmail.com', end_date: '2023-04-20')
+Invitation.create(assessment_id: 2, user_id: 5, status: 'accepted', note: '', email: 'red@gmail.com', end_date: '2023-04-20')
+
   
