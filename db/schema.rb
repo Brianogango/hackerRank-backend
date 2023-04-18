@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_18_091737) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_18_200111) do
   create_table "assessment_kata", force: :cascade do |t|
     t.integer "assessment_id", null: false
     t.integer "kata_id", null: false
@@ -54,6 +54,19 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_18_091737) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "submissions", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "assessment_id", null: false
+    t.integer "kata_id", null: false
+    t.text "code"
+    t.text "result"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["assessment_id"], name: "index_submissions_on_assessment_id"
+    t.index ["kata_id"], name: "index_submissions_on_kata_id"
+    t.index ["user_id"], name: "index_submissions_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "email"
@@ -67,4 +80,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_18_091737) do
   add_foreign_key "assessment_kata", "kata", column: "kata_id"
   add_foreign_key "invitations", "assessments"
   add_foreign_key "invitations", "users"
+  add_foreign_key "submissions", "assessments"
+  add_foreign_key "submissions", "kata", column: "kata_id"
+  add_foreign_key "submissions", "users"
 end

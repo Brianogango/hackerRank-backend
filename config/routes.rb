@@ -1,10 +1,15 @@
 Rails.application.routes.draw do
+  resources :submissions, only: [:create, :update, :destroy]
+  
   resources :assessment_katas
   resources :assessments
   resources :katas
   resources :invitations, only: [:create, :update, :destroy]
   get '/invitations', to: 'invitations#student_index', as: 'student_invitations'
   get '/tm/invitations', to: 'invitations#tm_index', as: 'tm_invitations'
+  get '/submissions', to: 'submissions#student_index', as: 'student_submissions'
+  get '/tm/submissions', to: 'submissions#tm_index', as: 'tm_submissions'
+
    post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
   post '/users', to: 'users#create'

@@ -58,4 +58,31 @@ AssessmentKata.create(assessment_id: 1, kata_id: 1)
 AssessmentKata.create(assessment_id: 1, kata_id: 2)
 AssessmentKata.create(assessment_id: 2, kata_id: 1)
 
+
+
+Submission.create([
+  {
+    user_id: 2,
+    kata_id: 1,
+    assessment_id: 1,
+    code: "function validBraces(braces) { // your code here}",
+    result: "Passed all tests"
+  },
+  {
+    user_id: 4,
+    kata_id: 2,
+    assessment_id: 1,
+    code: "def sort_by_length(arr)arr.sort_by { |str| str.length }end",
+    result: "Failed 2 tests"
+  },
+  {
+    user_id: 5,
+    kata_id: 1,
+    assessment_id: 2,
+    code: "def valid_braces(string): # your code here return True",
+    result: "Passed all tests"
+  }
+])
+
+
   
