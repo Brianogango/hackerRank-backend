@@ -14,6 +14,7 @@ end
 
  #  POST /user
     def create
+        puts "User type value: #{params[:userType]}"
         user = User.create(user_params)
         if user.valid?
             render json: {status: :created, "success": "User saved successfully!"}
