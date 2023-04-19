@@ -37,5 +37,52 @@ Kata.create([
       duration: "60 minutes"
     }
   ])
-  
+
+User.create(username: "minnie", email: "minnie@gmail.com", userType: "TM", password: "123456") 
+User.create(username: "blue", email: "blue@gmail.com", userType: "student", password: "123456")
+User.create(username: "faith" , email: "faith@gmail.com", userType: "student", password: "123456")
+User.create(username: "green", email: "green@gmail.com", userType: "student", password: "123456")
+User.create(username: "red", email: "red@gmail.com", userType: "student", password: "123456")
+User.create(username: "white" , email: "white@gmail.com", userType: "student", password: "123456")
+User.create(username: "joy", email: "joy@gmail.com", userType: "student", password: "123456")
+
+
+Invitation.create(assessment_id: 1, user_id: 2, status: 'pending', note: 'The javascript assesment is created to test your skills', email: 'blue@gmail.com', end_date: '2023-04-18')
+Invitation.create(assessment_id: 3, user_id: 4, status: 'accepted', note: '', email: 'green@gmail.com', end_date: '2023-04-25')
+Invitation.create(assessment_id: 1, user_id: 4, status: 'declined', note: '', email: 'green@gmail.com', end_date: '2023-04-18')
+Invitation.create(assessment_id: 2, user_id: 6, status: 'pending', note: '', email: 'white@gmail.com', end_date: '2023-04-20')
+Invitation.create(assessment_id: 2, user_id: 5, status: 'accepted', note: '', email: 'red@gmail.com', end_date: '2023-04-20')
+
+
+AssessmentKata.create(assessment_id: 1, kata_id: 1)
+AssessmentKata.create(assessment_id: 1, kata_id: 2)
+AssessmentKata.create(assessment_id: 2, kata_id: 1)
+
+
+
+Submission.create([
+  {
+    user_id: 2,
+    kata_id: 1,
+    assessment_id: 1,
+    code: "function validBraces(braces) { // your code here}",
+    result: "Passed all tests"
+  },
+  {
+    user_id: 4,
+    kata_id: 2,
+    assessment_id: 1,
+    code: "def sort_by_length(arr)arr.sort_by { |str| str.length }end",
+    result: "Failed 2 tests"
+  },
+  {
+    user_id: 5,
+    kata_id: 1,
+    assessment_id: 2,
+    code: "def valid_braces(string): # your code here return True",
+    result: "Passed all tests"
+  }
+])
+
+
   

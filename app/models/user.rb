@@ -1,6 +1,5 @@
 class User < ApplicationRecord
     has_secure_password
-
     validates :username,  presence: true, uniqueness:true
     validates :userType, presence: true, inclusion: { in: ['TM', 'student'], case_sensitive: false }
     validates :password,  presence: true
