@@ -1,6 +1,6 @@
 class AssessmentKatasController < ApplicationController
-    # before_action :authorize_tm, only: [:create, :destroy, :update]
-    skip_before_action :authorized, only: [:create, :show, :index]
+    before_action :authorize_tm, only: [:create, :destroy, :update]
+    # skip_before_action :authorized, only: [:create, :show, :index]
     def index
         assessment_katas = AssessmentKata.all
         render json: assessment_katas
