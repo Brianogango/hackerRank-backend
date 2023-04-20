@@ -1,4 +1,6 @@
+puts "Seeding DB⏳..."
 
+puts "Seeding Katas⏳..."
 Kata.create([
     {
       name: "Valid Braces",
@@ -23,6 +25,7 @@ Kata.create([
       description:  "Write a function that takes an array of strings as an argument and returns a sorted array containing the same strings, ordered from shortest to longest.\n\nFor example, if this array were passed as an argument:\n\n``` [\"Telescopes\", \"Glasses\", \"Eyes\", \"Monocles\"] ```\n\nYour function would return the following array:\n\n``` [\"Eyes\", \"Glasses\", \"Monocles\", \"Telescopes\"] ```\n\nAll of the strings in the array passed to your function will be different lengths, so you will not have to decide how to order multiple strings of the same length." 
     }
   ])
+  puts "Seeding Assessments⏳..."
   Assessment.create([
     {
       title: "JavaScript Assessment",
@@ -37,6 +40,7 @@ Kata.create([
       duration: "60 minutes"
     }
   ])
+  puts "Seeding Users⏳..."
 
 User.create(username: "minnie", email: "minnie@gmail.com", userType: "TM", password: "123456") 
 User.create(username: "blue", email: "blue@gmail.com", userType: "student", password: "123456")
@@ -46,28 +50,22 @@ User.create(username: "red", email: "red@gmail.com", userType: "student", passwo
 User.create(username: "white" , email: "white@gmail.com", userType: "student", password: "123456")
 User.create(username: "joy", email: "joy@gmail.com", userType: "student", password: "123456")
 
-
+puts "Seeding Invitations⏳..."
 Invitation.create(assessment_id: 1, user_id: 2, status: 'pending', note: 'The javascript assesment is created to test your skills', email: 'blue@gmail.com', end_date: '2023-04-18')
 Invitation.create(assessment_id: 3, user_id: 4, status: 'accepted', note: '', email: 'green@gmail.com', end_date: '2023-04-25')
 Invitation.create(assessment_id: 1, user_id: 4, status: 'declined', note: '', email: 'green@gmail.com', end_date: '2023-04-18')
 Invitation.create(assessment_id: 2, user_id: 6, status: 'pending', note: '', email: 'white@gmail.com', end_date: '2023-04-20')
 Invitation.create(assessment_id: 2, user_id: 5, status: 'accepted', note: '', email: 'red@gmail.com', end_date: '2023-04-20')
 
-
+puts "Seeding Assessment Katas⏳..."
 AssessmentKata.create(assessment_id: 1, kata_id: 1)
 AssessmentKata.create(assessment_id: 1, kata_id: 2)
 AssessmentKata.create(assessment_id: 2, kata_id: 1)
 
 
-
+puts "Seeding Submissions⏳..."
 Submission.create([
-  {
-    user_id: 2,
-    kata_id: 1,
-    assessment_id: 1,
-    code: "function validBraces(braces) { // your code here}",
-    result: "Passed all tests"
-  },
+  
   {
     user_id: 4,
     kata_id: 2,
@@ -83,6 +81,9 @@ Submission.create([
     result: "Passed all tests"
   }
 ])
+puts "Seeding Grades⏳..."
+Grade.create(submission_id: 3, score:100)
 
 
   
+puts "Done, DB seeded successfully✅"
