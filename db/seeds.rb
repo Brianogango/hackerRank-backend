@@ -40,6 +40,10 @@ Kata.create([
       duration: "60 minutes"
     }
   ])
+  Assessment.create(title: "Ruby Basics", duration: "60 minutes")
+  Assessment.create(title: "Javascript Basics", duration: "60 minutes")
+
+
   puts "Seeding Users⏳..."
 
 User.create(username: "minnie", email: "minnie@gmail.com", userType: "TM", password: "123456") 
@@ -85,5 +89,54 @@ puts "Seeding Grades⏳..."
 Grade.create(submission_id: 3, score:100)
 
 
+
+puts "Seeding mcqs⏳..."
+
+Mcq.create(assessment_id: 7, question_text: "What version of Rails introduced Hotwire?")
+Mcq.create(assessment_id: 7, question_text: "How do we call a validation in a model?")
+Mcq.create(assessment_id: 7, question_text: "What is the output of the following code? puts 'Hello World'")
+Mcq.create(assessment_id: 8, question_text: "What do WebSockets do?")
+Mcq.create(assessment_id: 8, question_text: "What is the output of the following code? console.log('Hello World')")
+Mcq.create(assessment_id: 8, question_text: "What is the output of the following code? console.log('Hello World')")
+
+puts "Seeding mcqs answers⏳..."
+  Answer.create([
+  {mcq_id: 1, answer_text: "Rails 6.1", is_correct: false},
+  {mcq_id: 1, answer_text: "Rails 6.0", is_correct: false},
+  {mcq_id: 1, answer_text: "Rails 7.0", is_correct: true}
   
+    ])
+  Answer.create([
+  {mcq_id: 2, answer_text: "validate", is_correct: false},
+  {mcq_id: 2, answer_text: "validates", is_correct: true},
+  {mcq_id: 2, answer_text: "validate!", is_correct: false}
+  
+    ])
+  Answer.create([
+  {mcq_id: 3, answer_text: "Hello World", is_correct: true},
+  {mcq_id: 3, answer_text: "Hello World!", is_correct: false},
+  {mcq_id: 3, answer_text: "Hello World !", is_correct: false}
+ 
+    ])
+  Answer.create([
+  {mcq_id: 4, answer_text: "They allow for real time communication between the client and the server", is_correct: true},
+  {mcq_id: 4, answer_text: "They allow for real time communication between the server and the server", is_correct: false},
+  {mcq_id: 4, answer_text: "They allow for real time communication between the client and the client", is_correct: false}
+  
+    ])
+  Answer.create([
+  {mcq_id: 5, answer_text: "Hello World!", is_correct: false},
+  {mcq_id: 5, answer_text: "Hello World !", is_correct: false},
+  {mcq_id: 5, answer_text: "Hello World", is_correct: true}
+  
+    ])
+  Answer.create([
+  {mcq_id: 6, answer_text: "Hello World", is_correct: true},
+  {mcq_id: 6, answer_text: "Hello World!", is_correct: false},
+  {mcq_id: 6, answer_text: "Hello World !", is_correct: false}
+ 
+    ])                    
+            
+      
+
 puts "Done, DB seeded successfully✅"
