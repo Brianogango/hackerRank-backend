@@ -1,5 +1,5 @@
 class AssessmentsController < ApplicationController
-    #before_action :authorize_tm, only: [:create, :destroy, :update]
+    # before_action :authorize_tm, only: [:create, :destroy, :update]
       skip_before_action :authorized, only: [:create, :show, :index,:destroy]
 
     #GET /assessments

@@ -1,20 +1,17 @@
 class KatasController < ApplicationController
     # before_action :authorize_tm, only: [:create, :destroy]
-     skip_before_action :authorized, only: [:index]
+     skip_before_action :authorized, only: [:index, :show]
 
 
     #GET /katas
     def index
-        katas = Kata.all
+        katas = Kata.all()
         render json: katas
-
     end
     #GET /katas:id
     def show
         kata = Kata.find(params[:id])
         render json: kata
-
-
     end
     # PATCH/PUT /katas/1
      def update
@@ -39,7 +36,6 @@ class KatasController < ApplicationController
         kata = Kata.find(params[:id])
         kata.destroy
         render json: { status: :ok, message: "Kata deleted" }
-
     end
     private
     def authorize_tm
