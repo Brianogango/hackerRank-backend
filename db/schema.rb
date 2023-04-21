@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_19_100134) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_21_034648) do
+  create_table "answers", force: :cascade do |t|
+    t.integer "mcq_id", null: false
+    t.text "answer_text"
+    t.boolean "is_correct"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["mcq_id"], name: "index_answers_on_mcq_id"
+  end
+
   create_table "assessment_kata", force: :cascade do |t|
     t.integer "assessment_id", null: false
     t.integer "kata_id", null: false
@@ -26,6 +35,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_19_100134) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "userId"
+  end
+
+  create_table "grades", force: :cascade do |t|
+    t.integer "submission_id", null: false
+    t.float "score"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["submission_id"], name: "index_grades_on_submission_id"
   end
 
   create_table "invitations", force: :cascade do |t|
@@ -54,6 +71,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_19_100134) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "mcqs", force: :cascade do |t|
+    t.integer "assessment_id", null: false
+    t.text "question_text"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["assessment_id"], name: "index_mcqs_on_assessment_id"
+  end
+
   create_table "submissions", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "assessment_id", null: false
@@ -76,10 +101,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_19_100134) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "answers", "mcqs"
   add_foreign_key "assessment_kata", "assessments"
-  add_foreign_key "assessment_kata", "katas"
+
+  add_foreign_key "assessment_kata", "kata", column: "kata_id"
+  add_foreign_key "grades", "submissions"
+
   add_foreign_key "invitations", "assessments"
   add_foreign_key "invitations", "users"
+  add_foreign_key "mcqs", "assessments"
   add_foreign_key "submissions", "assessments"
   add_foreign_key "submissions", "katas"
   add_foreign_key "submissions", "users"
