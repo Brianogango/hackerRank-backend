@@ -55,13 +55,14 @@ end
       params.require(:invitation).permit(:assessment_id, :user_id, :status, :note, :email, :end_date)
     end
     def authorize_tm
-      unless current_user && current_user.userType == "TM"
-          render json: { error: 'Unauthorized ' }, status: :unauthorized
-      end
-  end
-  def authorize_student
-    unless current_user && current_user.userType == "student"
+     unless current_user && current_user.userType == "TM"
+           render json: { error: 'Unauthorized ' }, status: :unauthorized
+       end
+   end
+   def authorize_student
+     unless current_user && current_user.userType == "student"
         render json: { error: 'Unauthorized ' }, status: :unauthorized
     end
 end
 end
+

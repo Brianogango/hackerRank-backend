@@ -103,10 +103,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_21_034648) do
 
   add_foreign_key "answers", "mcqs"
   add_foreign_key "assessment_kata", "assessments"
-
-  add_foreign_key "assessment_kata", "kata", column: "kata_id"
+  add_foreign_key "assessment_kata", "katas"
   add_foreign_key "grades", "submissions"
-
   add_foreign_key "invitations", "assessments"
   add_foreign_key "invitations", "users"
   add_foreign_key "mcqs", "assessments"
