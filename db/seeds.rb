@@ -1,5 +1,6 @@
 # puts "Seeding DB⏳..."
 
+
 # puts "Seeding Katas⏳..."
 # Kata.create([
 #     {
@@ -42,6 +43,7 @@
 #   ])
 #   Assessment.create(title: "Ruby Basics", duration: "60 minutes")
 #   Assessment.create(title: "Javascript Basics", duration: "60 minutes")
+
 
 
 #   puts "Seeding Users⏳..."
@@ -119,7 +121,14 @@
  
 # #     ])                    
             
+
 #    StudentAssessment.create(user_id: 5, assessment_id: 2, overallgrade:80, student_kata_attempt_id: 1, )  
 #     StudentKataAttempt.create(user_id: 5, kata_id: 1,code:"function validBraces(s) {const stack = [];const braces = for (const c of s) {if (c in braces) {if (!stack.length || stack.pop() !== braces[c]) {return false;}} else {stack.push(c);}}return !stack.length;}")
 #     Feedback.create(user_id: 5, student_kata_attempt_id: 1, assessment_id:2, feedback_text: "your code looks good")
  # puts "Done, DB seeded successfully✅"
+
+      
+
+puts "Done, DB seeded successfully✅"
+
+

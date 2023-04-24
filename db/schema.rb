@@ -62,7 +62,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_24_092356) do
     t.index ["user_id"], name: "index_invitations_on_user_id"
   end
 
-  create_table "kata", force: :cascade do |t|
+  create_table "katas", force: :cascade do |t|
     t.string "name"
     t.string "slug"
     t.string "url"
@@ -130,7 +130,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_24_092356) do
 
   add_foreign_key "answers", "mcqs"
   add_foreign_key "assessment_kata", "assessments"
+
   add_foreign_key "assessment_kata", "kata", column: "kata_id"
+
   add_foreign_key "feedbacks", "assessments"
   add_foreign_key "feedbacks", "student_kata_attempts"
   add_foreign_key "feedbacks", "users"
@@ -146,4 +148,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_24_092356) do
   add_foreign_key "student_mcq_attempts", "mcqs"
   add_foreign_key "student_mcq_attempts", "student_assessments"
   add_foreign_key "student_mcq_attempts", "users"
+
+  add_foreign_key "grades", "submissions"
+
+ 
+  add_foreign_key "submissions", "assessments"
+  add_foreign_key "submissions", "katas"
+  add_foreign_key "submissions", "users"
+
 end

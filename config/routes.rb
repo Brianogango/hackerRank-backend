@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   resources :feedbacks
   resources :student_mcq_attempts
   resources :student_assessments, only: [:create, :update, :destroy]
