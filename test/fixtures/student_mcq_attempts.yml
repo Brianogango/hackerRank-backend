@@ -1,15 +1,13 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  student_assessment: one
+  mcq: one
+  answer: one
   user: one
-  assessment: one
-  kata: one
-  code: MyText
-  result: MyText
 
 two:
+  student_assessment: two
+  mcq: two
+  answer: two
   user: two
-  assessment: two
-  kata: two
-  code: MyText
-  result: MyText

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_21_034648) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_24_092356) do
   create_table "answers", force: :cascade do |t|
     t.integer "mcq_id", null: false
     t.text "answer_text"
@@ -37,12 +37,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_21_034648) do
     t.integer "userId"
   end
 
-  create_table "grades", force: :cascade do |t|
-    t.integer "submission_id", null: false
-    t.float "score"
+  create_table "feedbacks", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "assessment_id", null: false
+    t.integer "student_kata_attempt_id", null: false
+    t.text "feedback_text"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["submission_id"], name: "index_grades_on_submission_id"
+    t.index ["assessment_id"], name: "index_feedbacks_on_assessment_id"
+    t.index ["student_kata_attempt_id"], name: "index_feedbacks_on_student_kata_attempt_id"
+    t.index ["user_id"], name: "index_feedbacks_on_user_id"
   end
 
   create_table "invitations", force: :cascade do |t|
@@ -79,17 +83,40 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_21_034648) do
     t.index ["assessment_id"], name: "index_mcqs_on_assessment_id"
   end
 
-  create_table "submissions", force: :cascade do |t|
+  create_table "student_assessments", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "assessment_id", null: false
-    t.integer "kata_id", null: false
-    t.text "code"
-    t.text "result"
+    t.float "overallgrade"
+    t.integer "student_kata_attempt_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["assessment_id"], name: "index_submissions_on_assessment_id"
-    t.index ["kata_id"], name: "index_submissions_on_kata_id"
-    t.index ["user_id"], name: "index_submissions_on_user_id"
+    t.index ["assessment_id"], name: "index_student_assessments_on_assessment_id"
+    t.index ["student_kata_attempt_id"], name: "index_student_assessments_on_student_kata_attempt_id"
+    t.index ["user_id"], name: "index_student_assessments_on_user_id"
+  end
+
+  create_table "student_kata_attempts", force: :cascade do |t|
+    t.integer "kata_id", null: false
+    t.integer "user_id", null: false
+    t.text "grade"
+    t.text "code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["kata_id"], name: "index_student_kata_attempts_on_kata_id"
+    t.index ["user_id"], name: "index_student_kata_attempts_on_user_id"
+  end
+
+  create_table "student_mcq_attempts", force: :cascade do |t|
+    t.integer "student_assessment_id", null: false
+    t.integer "mcq_id", null: false
+    t.integer "answer_id", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["answer_id"], name: "index_student_mcq_attempts_on_answer_id"
+    t.index ["mcq_id"], name: "index_student_mcq_attempts_on_mcq_id"
+    t.index ["student_assessment_id"], name: "index_student_mcq_attempts_on_student_assessment_id"
+    t.index ["user_id"], name: "index_student_mcq_attempts_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -104,11 +131,19 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_21_034648) do
   add_foreign_key "answers", "mcqs"
   add_foreign_key "assessment_kata", "assessments"
   add_foreign_key "assessment_kata", "kata", column: "kata_id"
-  add_foreign_key "grades", "submissions"
+  add_foreign_key "feedbacks", "assessments"
+  add_foreign_key "feedbacks", "student_kata_attempts"
+  add_foreign_key "feedbacks", "users"
   add_foreign_key "invitations", "assessments"
   add_foreign_key "invitations", "users"
   add_foreign_key "mcqs", "assessments"
-  add_foreign_key "submissions", "assessments"
-  add_foreign_key "submissions", "kata", column: "kata_id"
-  add_foreign_key "submissions", "users"
+  add_foreign_key "student_assessments", "assessments"
+  add_foreign_key "student_assessments", "student_kata_attempts"
+  add_foreign_key "student_assessments", "users"
+  add_foreign_key "student_kata_attempts", "kata", column: "kata_id"
+  add_foreign_key "student_kata_attempts", "users"
+  add_foreign_key "student_mcq_attempts", "answers"
+  add_foreign_key "student_mcq_attempts", "mcqs"
+  add_foreign_key "student_mcq_attempts", "student_assessments"
+  add_foreign_key "student_mcq_attempts", "users"
 end
