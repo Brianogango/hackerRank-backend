@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :assessment_katas
   resources :assessments
   resources :katas
-  resources :invitations, only: [:create, :update, :destroy]
+  resources :invitations, only: [:create, :show, :update, :destroy]
   get '/grades', to: 'grades#student_index', as: 'student_grades'
   get '/tm/grades', to: 'grades#tm_index', as: 'tm_grades'
   get '/invitations', to: 'invitations#student_index', as: 'student_invitations'

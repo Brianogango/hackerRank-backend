@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_21_034648) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_24_212509) do
   create_table "answers", force: :cascade do |t|
     t.integer "mcq_id", null: false
     t.text "answer_text"
@@ -69,6 +69,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_21_034648) do
     t.json "rank"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.json "tests"
+    t.text "starter_code"
   end
 
   create_table "mcqs", force: :cascade do |t|
@@ -103,10 +105,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_21_034648) do
 
   add_foreign_key "answers", "mcqs"
   add_foreign_key "assessment_kata", "assessments"
-
-  add_foreign_key "assessment_kata", "kata", column: "kata_id"
+  add_foreign_key "assessment_kata", "katas"
   add_foreign_key "grades", "submissions"
-
   add_foreign_key "invitations", "assessments"
   add_foreign_key "invitations", "users"
   add_foreign_key "mcqs", "assessments"
