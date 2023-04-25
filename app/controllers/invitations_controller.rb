@@ -16,6 +16,7 @@ end
   
   # GET /invitations/1
   def show
+    invitation = set_invitation
     render json: @invitation
   end
 

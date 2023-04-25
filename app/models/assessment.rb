@@ -4,4 +4,5 @@ class Assessment < ApplicationRecord
     has_many :mcqs
     has_many :invitations
   
+
 end
