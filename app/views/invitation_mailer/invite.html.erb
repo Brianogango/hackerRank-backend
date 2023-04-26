@@ -1,0 +1,6 @@
+ <h2>Welcome to Hackerank Coding!</h2>
+    <p>Hi <%= @invitation.email %>,</p>
+    <p>You have been invited to take an assessment on Hackerank Coding. At Hackerank Coding, our goal is to teach children and parents the value of learning coding at a young age. Not only is programming vital to success in the technology-driven economy of the 21st century, but it can teach kids a broad range of skills that will help them in countless other areas as well.</p>
+    <p>Please click on the link below to access the assessment:</p>
+    <%# <p><%= link_to 'Take Assessment', assessment_url(@invitation.assessment, token: @invitation.token) %></p> %>
+    <p>The assessment will be available until <%= @invitation.end_date %>. Good luck!</p>

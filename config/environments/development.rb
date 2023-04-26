@@ -13,6 +13,19 @@ Rails.application.configure do
 
   # Show full error reports.
   config.consider_all_requests_local = true
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.perform_deliveries = true
+  
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address: 'smtp.office365.com',
+    port: 587,
+    domain: 'outlook.com',
+    user_name: 'bettmo1209@outlook.com',
+    password: 'vision2020',
+    authentication: 'login',
+    enable_starttls_auto: true
+  }
 
   # Enable server timing
   config.server_timing = true

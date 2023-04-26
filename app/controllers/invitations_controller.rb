@@ -20,15 +20,20 @@ end
   end
 
   # POST /invitations
-  def create
-    @invitation = Invitation.new(invitation_params)
+# POST /invitations
+def create
+  @invitation = Invitation.new(invitation_params)
 
-    if @invitation.save
-      render json: @invitation, status: :created, location: @invitation
-    else
-      render json: @invitation.errors, status: :unprocessable_entity
-    end
+  if @invitation.save
+    # Send email to user
+    InvitationMailer.invite(@invitation).deliver_now
+
+    render json: @invitation, status: :created, location: @invitation
+  else
+    render json: @invitation.errors, status: :unprocessable_entity
   end
+end
+
 
   # PATCH/PUT /invitations/1
   def update
