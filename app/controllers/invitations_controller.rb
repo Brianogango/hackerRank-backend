@@ -21,15 +21,20 @@ end
   end
 
   # POST /invitations
-  def create
-    @invitation = Invitation.new(invitation_params)
+# POST /invitations
+def create
+  @invitation = Invitation.new(invitation_params)
 
-    if @invitation.save
-      render json: @invitation, status: :created, location: @invitation
-    else
-      render json: @invitation.errors, status: :unprocessable_entity
-    end
+  if @invitation.save
+    # Send email to user
+    InvitationMailer.invite(@invitation).deliver_now
+
+    render json: @invitation, status: :created, location: @invitation
+  else
+    render json: @invitation.errors, status: :unprocessable_entity
   end
+end
+
 
   # PATCH/PUT /invitations/1
   def update
@@ -56,13 +61,14 @@ end
       params.require(:invitation).permit(:assessment_id, :user_id, :status, :note, :email, :end_date)
     end
     def authorize_tm
-      unless current_user && current_user.userType == "TM"
-          render json: { error: 'Unauthorized ' }, status: :unauthorized
-      end
-  end
-  def authorize_student
-    unless current_user && current_user.userType == "student"
+     unless current_user && current_user.userType == "TM"
+           render json: { error: 'Unauthorized ' }, status: :unauthorized
+       end
+   end
+   def authorize_student
+     unless current_user && current_user.userType == "student"
         render json: { error: 'Unauthorized ' }, status: :unauthorized
     end
 end
 end
+
