@@ -44,6 +44,6 @@ class KatasController < ApplicationController
         end
     end
     def kata_params
-        params.permit(:id, :name, :slug, :url, :category, :description, :tags, :languages, :rank)
+        params.permit(:id, :name, :slug, :url, :category, :description, :tags, :languages, :rank, :tests, :starter_code)
     end
 end

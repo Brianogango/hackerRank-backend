@@ -5,7 +5,7 @@ class InvitationsController < ApplicationController
 # GET /invitations/student
 def student_index
   @invitations = Invitation.where(email: current_user.email)
-  render json: @invitations.as_json(include: { assessment: { only: [:id, :title, :duration] } }, only: [:id, :status,:end_date,:note])
+  render json: @invitations
 end
 
 # GET /invitations/tm
@@ -16,6 +16,7 @@ end
   
   # GET /invitations/1
   def show
+    invitation = set_invitation
     render json: @invitation
   end
 
