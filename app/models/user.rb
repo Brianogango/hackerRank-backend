@@ -1,5 +1,6 @@
 class User < ApplicationRecord
     has_secure_password
+    has_many :submissions
     validates :username,  presence: true
     validates :userType, inclusion: { in: %w[student TM], message: "must be either 'student' or 'TM'" }
     validates :password,  presence: true
