@@ -227,13 +227,13 @@ output: -5,
 
 #   puts "Seeding Users⏳..."
 
-# User.create(username: "minnie", email: "minnie@gmail.com", userType: "TM", password: "123456") 
-# User.create(username: "blue", email: "blue@gmail.com", userType: "student", password: "123456")
-# User.create(username: "faith" , email: "faith@gmail.com", userType: "student", password: "123456")
-# User.create(username: "green", email: "green@gmail.com", userType: "student", password: "123456")
-# User.create(username: "red", email: "red@gmail.com", userType: "student", password: "123456")
-# User.create(username: "white" , email: "white@gmail.com", userType: "student", password: "123456")
-# User.create(username: "joy", email: "joy@gmail.com", userType: "student", password: "123456")
+User.create(username: "minnie", email: "minnie@gmail.com", userType: "TM", password: "123456") 
+User.create(username: "blue", email: "blue@gmail.com", userType: "student", password: "123456")
+User.create(username: "faith" , email: "faith@gmail.com", userType: "student", password: "123456")
+User.create(username: "green", email: "green@gmail.com", userType: "student", password: "123456")
+User.create(username: "red", email: "red@gmail.com", userType: "student", password: "123456")
+User.create(username: "white" , email: "white@gmail.com", userType: "student", password: "123456")
+User.create(username: "joy", email: "joy@gmail.com", userType: "student", password: "123456")
 
 # puts "Seeding Invitations⏳..."
 # Invitation.create(assessment_id: 1, user_id: 2, status: 'pending', note: 'The javascript assesment is created to test your skills', email: 'blue@gmail.com', end_date: '2023-04-18')

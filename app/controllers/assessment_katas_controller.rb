@@ -1,5 +1,5 @@
 class AssessmentKatasController < ApplicationController
-  before_action :authorize_tm, only: [:create, :destroy, :update]
+  # before_action :authorize_tm, only: [:create, :destroy, :update]
   skip_before_action :authorized, only: [:create, :show, :index]
 
   def index
@@ -27,14 +27,14 @@ class AssessmentKatasController < ApplicationController
     end
   end
 
-  def current_user
-    if request.headers['Authorization']
-      token = request.headers['Authorization'].split(' ')[1]
-      decoded_token = JWT.decode(token, ENV['JWT_SECRET_KEY'], true, algorithm: 'HS256')[0]
-      user_id = decoded_token['user_id']
-      User.find(user_id)
-    end
-  end
+  # def current_user
+  #   if request.headers['Authorized']
+  #     token = request.headers['Authorization'].split(' ')[1]
+  #     decoded_token = JWT.decode(token, ENV['JWT_SECRET_KEY'], true, algorithm: 'HS256')[0]
+  #     user_id = decoded_token['user_id']
+  #     User.find(user_id)
+  #   end
+  # end
 
   def update
     assessment_kata = AssessmentKata.find(params[:id])
@@ -52,9 +52,9 @@ class AssessmentKatasController < ApplicationController
     params.permit(:assessment_id, :kata_id)
   end
 
-  def authorize_tm
-    unless current_user && current_user.userType == 'TM'
-      render json: { error: 'Unauthorized' }, status: :unauthorized
-    end
-  end
+  # def authorize_tm
+  #   unless current_user && current_user.userType == 'TM'
+  #     render json: { error: 'Unauthorized' }, status: :unauthorized
+  #   end
+  # end
 end

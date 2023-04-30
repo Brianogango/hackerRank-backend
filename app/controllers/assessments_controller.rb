@@ -3,10 +3,12 @@ class AssessmentsController < ApplicationController
       skip_before_action :authorized, only: [:create, :show, :index,:destroy]
 
     #GET /assessments
-    def index
-        assessments = Assessment.all
-        render json: assessments
-    end
+   def index
+    user_id = params[:user_id]
+    assessments = user_id ? Assessment.where(user_id: user_id) : Assessment.all
+
+    render json: assessments
+  end
 
   #    def show
   #   assessments = Assessment.where(userId: params[:userId])

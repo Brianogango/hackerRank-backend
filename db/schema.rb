@@ -10,9 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema[7.0].define(version: 2023_04_24_212509) do
-
+ActiveRecord::Schema[7.0].define(version: 2023_04_27_125550) do
   create_table "answers", force: :cascade do |t|
     t.integer "mcq_id", null: false
     t.text "answer_text"
@@ -123,6 +121,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_24_212509) do
     t.index ["user_id"], name: "index_student_mcq_attempts_on_user_id"
   end
 
+  create_table "submissions", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "assessment_id"
+    t.integer "kata_id"
+    t.text "code"
+    t.text "result"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "email"
@@ -135,15 +143,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_24_212509) do
   add_foreign_key "answers", "mcqs"
   add_foreign_key "assessment_kata", "assessments"
   add_foreign_key "assessment_kata", "katas"
-  add_foreign_key "grades", "submissions"
-
-
-  add_foreign_key "assessment_kata", "kata", column: "kata_id"
-
   add_foreign_key "feedbacks", "assessments"
   add_foreign_key "feedbacks", "student_kata_attempts"
   add_foreign_key "feedbacks", "users"
-
   add_foreign_key "invitations", "assessments"
   add_foreign_key "invitations", "users"
   add_foreign_key "mcqs", "assessments"
@@ -156,12 +158,4 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_24_212509) do
   add_foreign_key "student_mcq_attempts", "mcqs"
   add_foreign_key "student_mcq_attempts", "student_assessments"
   add_foreign_key "student_mcq_attempts", "users"
-
-  add_foreign_key "grades", "submissions"
-
- 
-  add_foreign_key "submissions", "assessments"
-  add_foreign_key "submissions", "katas"
-  add_foreign_key "submissions", "users"
-
 end
