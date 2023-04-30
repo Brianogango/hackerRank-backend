@@ -47,7 +47,9 @@ end
 
   # DELETE /invitations/1
   def destroy
+    @invitation = set_invitation
     @invitation.destroy
+    head :no_contenet
   end
 
   private
