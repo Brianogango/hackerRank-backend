@@ -21,6 +21,6 @@ end
   private
 
   def submission_params
-    params.require(:submission).permit(:user_id, :assessment_id, :kata_id, :code, :result)
+    params.require(:submission).permit(:user_id, :assessment_id, :kata_id, :code, :result, :percentage)
   end
 end
