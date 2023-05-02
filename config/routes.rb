@@ -19,7 +19,8 @@ Rails.application.routes.draw do
   get '/tm/grades', to: 'grades#tm_index', as: 'tm_grades'
   get '/invitations', to: 'invitations#student_index', as: 'student_invitations'
   get '/tm/invitations', to: 'invitations#tm_index', as: 'tm_invitations'
-  # get '/submissions/:id', to: 'submissions#show'
+  get '/check', to: 'submissions#check_submission'
+
   # get '/tm/submissions', to: 'submissions#tm_index', as: 'tm_submissions'
   # get '/student_assessments', to: 'student_assessments#student_index', as: 'student_student_assessments'
   # get '/tm/student_assessments', to: 'student_assessments#tm_index', as: 'tm_student_assessments'
