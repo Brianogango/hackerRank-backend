@@ -18,7 +18,7 @@
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    origins 'https://hacker-rank-clone-mkfr0e53l-njambi-muhoro.vercel.app' # replace with your frontend URL
+    origins 'https://hacker-rank-delta.vercel.app/' # replace with your frontend URL
     resource '*', headers: :any, methods: [:get, :post, :put, :patch, :delete, :options, :head]
   end
 end
